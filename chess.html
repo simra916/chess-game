@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini Chess — Black & White</title>
+  <link rel="stylesheet" href="chess.css">
+</head>
+<body>
+  <main class="app">
+    <section class="left-panel">
+      <div class="controls">
+        <div class="turn">Turn: <span id="turnDisplay">White</span></div>
+        <div class="buttons">
+          <button id="resetBtn">Reset</button>
+          <button id="undoBtn" disabled>Undo</button>
+        </div>
+      </div>
+
+      <div id="board" class="board" aria-label="Chess board"></div>
+
+      <div class="file-ranks">
+        <div class="ranks">8 7 6 5 4 3 2 1</div>
+        <div class="files">a b c d e f g h</div>
+      </div>
+    </section>
+
+    <aside class="right-panel">
+      <h2>Mini Chess</h2>
+      <p class="desc">
+        Lightweight chess demo. Click a piece to select it, click a highlighted square to move.
+      </p>
+
+      <h3>Notes</h3>
+      <ul>
+        <li>No castling or en-passant.</li>
+        <li>Pawn auto-promotes to queen.</li>
+        <li>No check/checkmate detection (easy extension).</li>
+      </ul>
+    </aside>
+  </main>
+
+  <script src="chess.js"></script>
+</body>
+</html>
