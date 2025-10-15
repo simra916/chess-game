@@ -1,0 +1,110 @@
+/* Black & white theme only */
+:root{
+  --bg: #000000;
+  --panel: #0f0f0f;
+  --white: #ffffff;
+  --muted: #bfbfbf;
+  --light-square: #ffffff;
+  --dark-square: #000000;
+  --accent: #000000; /* accent same as dark for simple B&W */
+  --capture: rgba(0,0,0,0.2);
+}
+
+*{box-sizing:border-box;font-family: Arial, Helvetica, sans-serif}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--white)}
+.app{
+  min-height:100vh;
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+  justify-content:center;
+  padding:24px;
+}
+
+/* Panels */
+.left-panel, .right-panel{
+  background: linear-gradient(#0b0b0b,#121212);
+  border:1px solid #222;
+  border-radius:8px;
+  padding:12px;
+}
+.left-panel{width:380px}
+.right-panel{width:320px;color:var(--muted)}
+
+/* Controls */
+.controls{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.turn{font-weight:700;color:var(--white)}
+.buttons button{
+  background:transparent;
+  color:var(--white);
+  border:1px solid #444;
+  padding:6px 8px;
+  border-radius:6px;
+  cursor:pointer;
+}
+.buttons button:disabled{opacity:0.4;cursor:not-allowed}
+
+/* Board */
+.board{
+  width:360px;height:360px;
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  grid-template-rows:repeat(8,1fr);
+  border-radius:6px;
+  overflow:hidden;
+  border:4px solid #111;
+}
+.square{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  font-size:28px;
+  user-select:none;
+}
+.square.light{ background: var(--light-square); color:var(--dark-square) }
+.square.dark{ background: var(--dark-square); color:var(--light-square) }
+
+.piece{
+  width:86%;
+  height:86%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:28px;
+  background:transparent;
+}
+
+/* selected & move indicators */
+.square.selected{ outline:4px solid #777; outline-offset:-4px }
+.move-dot{
+  position:absolute;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--white);
+  opacity:0.2;
+  pointer-events:none;
+}
+.move-capture{
+  position:absolute;
+  width:100%;height:100%;
+  border-radius:6px;
+  background:var(--capture);
+  pointer-events:none;
+}
+
+/* file/rank labels */
+.file-ranks{ display:flex; justify-content:space-between; margin-top:10px; font-size:12px; color:var(--muted) }
+
+/* responsive */
+@media (max-width:880px){
+  .app{flex-direction:column;align-items:center}
+  .left-panel,.right-panel{width:92vw}
+  .board{width:92vw;height:92vw}
+}
